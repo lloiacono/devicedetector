@@ -8,9 +8,9 @@ class Service
 {
     protected $detect = null;
 
-    public function __construct() 
+    public function __construct(Mobile_Detect $detector) 
     {
-        $this->detect = new Mobile_Detect;
+        $this->detect = $detector;
     }
 
     public function getOs() : string
@@ -41,13 +41,13 @@ class Service
         );
     
     
-    foreach($oses as $os => $preg_pattern) {
-        if ( preg_match('@' . $preg_pattern . '@', $userAgent) ) {
-            return $os;
+        foreach($oses as $os => $preg_pattern) {
+            if ( preg_match('@' . $preg_pattern . '@', $userAgent) ) {
+                return $os;
+            }
         }
-    }
         
-    return 'n/a';
+        return 'n/a';
     }
 
     public function getDevice() : string

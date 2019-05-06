@@ -13,7 +13,7 @@ class ServiceTest extends TestCase
         $this->assertInstanceOf(Service::class, $classUnderTest);
     }
 
-    private function getClassUnderTest() : RenderService
+    private function getClassUnderTest() : Service
     {
         return new Service();
     }
